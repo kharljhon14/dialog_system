@@ -1,0 +1,5 @@
+{
+  "id": "01d08d69-0386-40e5-9472-bf4319573c41",
+  "text": "Add dialog",
+  "next": { "id": "a68295ef-009a-49ff-81fd-9e7f98e2a8db", "text": "child dialog", "next": null }
+}
