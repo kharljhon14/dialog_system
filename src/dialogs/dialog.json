@@ -1,5 +1,25 @@
 {
-  "id": "01d08d69-0386-40e5-9472-bf4319573c41",
-  "text": "Add dialog",
-  "next": { "id": "a68295ef-009a-49ff-81fd-9e7f98e2a8db", "text": "child dialog", "next": null }
+  "head": {
+    "id": "cd1b845b-56cf-41b7-9802-8858c1a3be6a",
+    "dialog": { "id": "5800e36d-e548-4598-aa52-46ed3f26a749", "text": "Add dialog" },
+    "next": {
+      "id": "bf352cad-e846-47d8-bf9f-bbfb4ade25c3",
+      "dialog": { "id": "0c033d01-1042-4c97-96c9-0626401f77a0", "text": "child dialog" },
+      "next": {
+        "id": "a9f7b9e6-d812-4d57-aaed-c327bb5d9612",
+        "dialog": { "id": "65c7c652-ea64-4280-9952-4fe227a37a22", "text": "child dialog" },
+        "next": {
+          "id": "cf50c6bc-34ac-4e79-9501-89c842926b38",
+          "dialog": { "id": "c87032cf-aae9-471a-9819-935e987f3aef", "text": "child dialog" },
+          "next": null
+        }
+      }
+    }
+  },
+  "tail": {
+    "id": "cf50c6bc-34ac-4e79-9501-89c842926b38",
+    "dialog": { "id": "c87032cf-aae9-471a-9819-935e987f3aef", "text": "child dialog" },
+    "next": null
+  },
+  "length": 4
 }

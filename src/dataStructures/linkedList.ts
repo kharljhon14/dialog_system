@@ -1,9 +1,7 @@
-import { Dialog } from '../types/dialog';
-
-class Node<T> {
+class ListNode<T> {
   id: string;
   dialog: T;
-  next: Node<T> | null;
+  next: ListNode<T> | null;
   constructor(value: T) {
     this.id = crypto.randomUUID();
     this.dialog = value;
@@ -11,13 +9,15 @@ class Node<T> {
   }
 }
 
-class LinkedList<T> {
-  head: Node<T> | null;
-  tail: Node<T> | null = null;
+export class LinkedList<T> {
+  head: ListNode<T> | null = null;
+  tail: ListNode<T> | null = null;
   length: number = 0;
 
-  constructor(value: T) {
-    const node = new Node(value);
+  constructor(value?: T) {
+    if (!value) return;
+
+    const node = new ListNode(value);
 
     this.head = node;
     this.tail = this.head;
@@ -25,7 +25,7 @@ class LinkedList<T> {
   }
 
   push(value: T) {
-    const node = new Node(value);
+    const node = new ListNode(value);
 
     if (!this.head) {
       this.head = node;
@@ -62,5 +62,3 @@ class LinkedList<T> {
     return temp;
   }
 }
-
-const list = new LinkedList(10);

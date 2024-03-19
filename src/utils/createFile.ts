@@ -1,23 +1,38 @@
 import fs from 'fs/promises';
 
 import { PATHNAME } from './createDir.js';
-import { Dialog } from '../types/dialog.js';
+import { Dialog, DialogJson } from '../types/dialog.js';
+import { readJson } from './readJson.js';
+import { LinkedList } from '../dataStructures/linkedList.js';
 
 export function createFile() {
-  const dialogJson = `{
-        "id":"${crypto.randomUUID()}",
-        "text": "Add dialog",
-        "next": null
-    }`;
+  const newDialog = {
+    id: crypto.randomUUID(),
+    text: 'Add dialog',
+  };
+  const dialogList = new LinkedList<Dialog>(newDialog);
 
-  fs.writeFile(`${PATHNAME}/dialog.json`, dialogJson);
+  fs.writeFile(`${PATHNAME}/dialog.json`, JSON.stringify(dialogList));
 }
 
-export function updateFile(pathname: string, dialog: Dialog) {
-  const updatedDialog = {
-    ...dialog,
-    next: { id: crypto.randomUUID(), text: 'child dialog', next: null },
+export function updateFile(pathname: string) {
+  const newDialog = {
+    id: crypto.randomUUID(),
+    text: 'child dialog',
   };
 
-  fs.writeFile(pathname, JSON.stringify(updatedDialog));
+  const json = readJson();
+  const dialogList = new LinkedList<Dialog>();
+
+  let temp = json?.head as any;
+
+  while (temp) {
+    dialogList.push(temp.dialog);
+
+    temp = temp.next;
+  }
+
+  dialogList.push(newDialog);
+
+  fs.writeFile(pathname, JSON.stringify(dialogList));
 }
